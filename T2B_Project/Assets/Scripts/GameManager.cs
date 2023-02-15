@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
 
 
 
-
-    void Start()
+    // Awake is used for initializing the whole Game with GameManager
+    void Awake()
     {
-        
+        cards = new List<GameObject>();
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
 
