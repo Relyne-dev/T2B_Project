@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     float xspeed, yspeed, zspeed;
     Rigidbody rigidbody;
+    Vector3 nextGridSpace;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
         // if the W key was pressed - old Unity Input System
         if (Input.GetKey(KeyCode.W))
         {
-            rigidbody.AddForce(new Vector3(0, 0, zspeed));
+            moveForward();
         }
 
         if (Input.GetKey(KeyCode.A))
@@ -45,5 +46,22 @@ public class PlayerController : MonoBehaviour
             rigidbody.AddForce(new Vector3(0, yspeed, 0), ForceMode.Force);
         }
 
+    }
+
+
+    private void moveForward()
+    {
+        transform.position = this.transform.position + Vector3.forward;
+
+        
+        if (Vector3.Distance(this.transform.position, nextGridSpace) < 0.001f)
+        {
+            this.transform.position = nextGridSpace;
+        }
+        else
+        {
+            this.transform.position = Vector3.MoveTowards(transform.position, nextGridSpace, 1f * Time.deltaTime);
+        }
+        
     }
 }
