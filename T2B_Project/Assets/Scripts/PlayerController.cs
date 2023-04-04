@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     float xspeed, yspeed, zspeed;
-    Rigidbody rigidbody;
+    Rigidbody rb;
     Vector3 nextGridSpace;
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         xspeed = 2f;
         yspeed = 5f;
         zspeed = 3f;
@@ -28,22 +28,22 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            rigidbody.AddForce(new Vector3(-xspeed, 0, 1));
+            rb.AddForce(new Vector3(-xspeed, 0, 1));
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            rigidbody.AddForce(new Vector3(0, 0, -zspeed));
+            rb.AddForce(new Vector3(0, 0, -zspeed));
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            rigidbody.AddForce(new Vector3(xspeed, 0, 1));
+            rb.AddForce(new Vector3(xspeed, 0, 1));
         }
 
         if (Input.GetKey(KeyCode.Space))
         {
-            rigidbody.AddForce(new Vector3(0, yspeed, 0), ForceMode.Force);
+            rb.AddForce(new Vector3(0, yspeed, 0), ForceMode.Force);
         }
 
     }

@@ -1,0 +1,34 @@
+{
+    "name": "Hand Controls",
+    "maps": [
+        {
+            "name": "MouseControls",
+            "id": "1890efee-d57b-493b-80b8-85b9fdc09ef6",
+            "actions": [
+                {
+                    "name": "MouseHold",
+                    "type": "Button",
+                    "id": "9e67e6d2-c1b9-46f3-ac75-5acaaea8be50",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bcc269e1-82a9-4acb-98ab-5c0922dc1a8a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
