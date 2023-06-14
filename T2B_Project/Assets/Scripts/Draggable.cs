@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Draggable : MonoBehaviour
 {
@@ -12,9 +13,15 @@ public class Draggable : MonoBehaviour
 
     Camera mainCamera;
 
+    PostProcessVolume glowVol;
+    Bloom g_Bloom;
+
     void Start()
     {
         mainCamera = Camera.main;
+        g_Bloom = ScriptableObject.CreateInstance<Bloom>();
+        g_Bloom.intensity.Override(1f);
+        glowVol = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, g_Bloom);
     }
 
     void OnMouseDown()
@@ -26,6 +33,11 @@ public class Draggable : MonoBehaviour
         currentZ = transform.position.z;
         transform.position = new Vector3(currentX, currentY + 1f, currentZ);
         // -----------------------------------------------------------------
+
+        if(Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            g_Bloom.color.value = Color.red;
+        }
 
         // find offset of mouse position to camera/world -------------------
         dragPlane = new Plane(mainCamera.transform.forward, transform.position);

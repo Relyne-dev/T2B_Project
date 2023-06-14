@@ -6,5 +6,5 @@ public enum CardType
 {
     UNIT,
     RESOURCE,
-    ACTION
+    EFFECT
 }
