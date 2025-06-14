@@ -19,7 +19,7 @@ public class Card : MonoBehaviour
     [Header("Card Variables")]
     CardType cardType;
     public int cost;
-    public int health;
+    public int hp;
     public int damage;
 
     public TMP_Text _cost;
@@ -42,14 +42,14 @@ public class Card : MonoBehaviour
     {
         if (Mouse.current.leftButton.isPressed && this.shouldBeDragged)
         {
-            this.borderObj.GetComponent<Renderer>().material.color = Color.red;
+            this.borderObj.GetComponent<Renderer>().material.color = Color.green;
             //glowProfile.GetSetting<Bloom>().enabled.value = true;
             //glowProfile.GetSetting<Bloom>().color.value = Color.red;
             //glowProfile.GetSetting<Bloom>().intensity.value = 20f;
         }
         else
         {
-            this.borderObj.GetComponent<Renderer>().material.color = Color.blue;
+            this.borderObj.GetComponent<Renderer>().material.color = Color.red;
             this.borderObj.GetComponent<Renderer>().material.SetColor("_EmissionColor", new Color(0.1f, 0.1f, 0.1f));
             //glowProfile.GetSetting<Bloom>().color.value = Color.blue;
             //glowProfile.GetSetting<Bloom>().intensity.value = 0f;
@@ -62,7 +62,7 @@ public class Card : MonoBehaviour
     void updateCardText()
     {
         _cost.text = cost.ToString();
-        _hp.text = health.ToString();
+        _hp.text = hp.ToString();
         _dmg.text = damage.ToString();
     }
 
